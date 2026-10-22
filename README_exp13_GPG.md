@@ -1,7 +1,7 @@
 # Exp 13 – GPG Email Security (Linux): remaining steps
 
 `./run.sh` -> **13** already did the setup and a full demo run with two test users
-(student = sender, recipient) under `~/gpg_lab`. Your real `~/.gnupg` was not touched.
+(student = sender, recipient) under `~/Desktop/practical/gpg_lab`. Your real `~/.gnupg` was not touched.
 The terminal output of that run is what you can screenshot (Sections 4–13 of your doc).
 
 ## What is left for you (manual run, for a record with your own passphrase)
@@ -10,11 +10,11 @@ Open **two terminals**. Terminal 1 = Student, Terminal 2 = Recipient.
 
 ```bash
 # Terminal 1
-mkdir -p ~/gpg_manual/student/.gnupg ~/gpg_manual/recipient && chmod 700 ~/gpg_manual/student/.gnupg
-export GNUPGHOME=~/gpg_manual/student/.gnupg ; cd ~/gpg_manual/student
+mkdir -p ~/Desktop/practical/gpg_manual/student/.gnupg ~/Desktop/practical/gpg_manual/recipient && chmod 700 ~/Desktop/practical/gpg_manual/student/.gnupg
+export GNUPGHOME=~/Desktop/practical/gpg_manual/student/.gnupg ; cd ~/Desktop/practical/gpg_manual/student
 # Terminal 2
-mkdir -p ~/gpg_manual/recipient/.gnupg && chmod 700 ~/gpg_manual/recipient/.gnupg
-export GNUPGHOME=~/gpg_manual/recipient/.gnupg ; cd ~/gpg_manual/recipient
+mkdir -p ~/Desktop/practical/gpg_manual/recipient/.gnupg && chmod 700 ~/Desktop/practical/gpg_manual/recipient/.gnupg
+export GNUPGHOME=~/Desktop/practical/gpg_manual/recipient/.gnupg ; cd ~/Desktop/practical/gpg_manual/recipient
 ```
 
 | # | Where | Command | Screenshot |
@@ -30,10 +30,10 @@ export GNUPGHOME=~/gpg_manual/recipient/.gnupg ; cd ~/gpg_manual/recipient
 | 9 | T1 | `nano email.txt` (paste sample email below; Ctrl+O, Enter, Ctrl+X) | yes |
 | 10 | T1 | `gpg --armor --encrypt --recipient recipient@example.com email.txt` (if asked "Use this key anyway?" type `y`) | yes |
 | 11 | T1 | `ls` and `cat email.txt.asc` | yes |
-| 12 | T1 | `cp email.txt.asc ~/gpg_manual/recipient/` | |
+| 12 | T1 | `cp email.txt.asc ~/Desktop/practical/gpg_manual/recipient/` | |
 | 13 | T2 | `gpg --decrypt email.txt.asc` (enter Recipient passphrase) | yes |
 | 14 | T1 | `nano signed_email.txt`, then `gpg --armor --detach-sign signed_email.txt` | yes |
-| 15 | T1 | `cp signed_email.txt signed_email.txt.asc ~/gpg_manual/recipient/` | |
+| 15 | T1 | `cp signed_email.txt signed_email.txt.asc ~/Desktop/practical/gpg_manual/recipient/` | |
 | 16 | T2 | `gpg --import student_public_key.asc` | |
 | 17 | T2 | `gpg --verify signed_email.txt.asc signed_email.txt` -> **Good signature** | yes |
 | 18 | T2 | *(bonus)* `echo hacked >> signed_email.txt` and verify again -> **BAD signature** | yes |

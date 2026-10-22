@@ -1,7 +1,7 @@
 # Exp 16 – Wireshark Packet Filters: remaining steps
 
 `./run.sh` -> **16** already installed Wireshark/tshark, recorded two sample captures
-(`~/wireshark_lab/full_capture.pcapng` and `dns_only_capture.pcapng`) and ran the lab's
+(`~/Desktop/practical/wireshark_lab/full_capture.pcapng` and `dns_only_capture.pcapng`) and ran the lab's
 display filters from the terminal. **Log out and back in once** so the `wireshark` group
 lets you capture live without sudo.
 
@@ -9,7 +9,7 @@ lets you capture live without sudo.
 
 ### 1. Open the capture (Section 5)
 ```bash
-wireshark -r ~/wireshark_lab/full_capture.pcapng &
+wireshark -r ~/Desktop/practical/wireshark_lab/full_capture.pcapng &
 ```
 *(Live capture instead: run `wireshark`, double-click your interface, open a website, press the red Stop button.)*
 
@@ -45,4 +45,4 @@ Observation/Result: list the filters used and how the packet list narrowed; use 
 - "No permission to capture": log out/in, or `sudo dpkg-reconfigure wireshark-common` (Yes) and `sudo usermod -aG wireshark $USER`.
 - No interface: check `ip link`.
 - `http` empty: most sites are HTTPS; use `curl http://example.com` or an `http://` site.
-- No GUI: `tshark -r ~/wireshark_lab/full_capture.pcapng -Y dns`.
+- No GUI: `tshark -r ~/Desktop/practical/wireshark_lab/full_capture.pcapng -Y dns`.
